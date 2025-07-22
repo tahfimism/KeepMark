@@ -48,7 +48,7 @@ document.getElementById('save-button').addEventListener('click', function() {
 
         chrome.storage.local.get(["saved"], function(result) {
             let saved = result.saved || [];
-            saved.push(newEntry);
+            saved.unshift(newEntry);
             chrome.storage.local.set({ saved }, () => {
                 // Re-render the list after saving a new entry
                 renderList();
